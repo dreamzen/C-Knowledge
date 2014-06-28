@@ -1,6 +1,11 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * Key point: Use two's complement!
+ *
+ */
+
 int main()
 {
 	int MAX_INT = 0x7FFFFFFF;
