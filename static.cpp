@@ -14,9 +14,10 @@ public:
 	char c;
 	static int s1;// Declaration. The compiler must see its definition before using it.
 	static const int s2 = 2;// ONLY const static data member can do this!
+    static int s3;
 	//int ab = 1;//Error or Warning!
 	//static int s1 = 1; //Error!
-	MyClass(int a)
+	MyClass(int a)//:s3(a) //Error! Only non-static member can be inited here!
 	{
 		s1 = a;// If there is no definition, it will get an LD Error.
 	}
@@ -35,7 +36,7 @@ public:
 	}
 };
 
-struct s1
+struct ss1
 {
 };
 
@@ -46,6 +47,6 @@ int main()
 	MyClass mc(10);
 	mc.print();
 	cout << sizeof(MyClass) << endl;//	16, a char(1) and a pointer to virtual function table(8), alignment ==> 8 * 2 = 16
-	cout << sizeof(s1) << endl;//		1, empty struct or class, size is 1
+	cout << sizeof(ss1) << endl;//		1, empty struct or class, size is 1
 	return 0;
 }

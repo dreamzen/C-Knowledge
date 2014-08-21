@@ -11,10 +11,16 @@ class Solution
 {
 public:
 	string str;
-	Solution(string ss)
+    const string con_str;
+	Solution(string ss) : con_str(ss) // con_str can only be inited this way!
 	{
 		str = ss;
 	}
+    void func1() const
+    {
+        //str = "gogogo"; //Error! Const function can't modify member!
+        cout << str << " " << con_str << endl;//But can visit member.
+    }
 	const char& operator[](int index) const
 	{
 		cout << "const []" << endl;
@@ -43,5 +49,6 @@ int main()
 	v[2] = 3;
 	Solution s("Hello world");
 	cout << s[1] << endl;// Call normal operator[]
+    s.func1();
 	return 0;
 }
